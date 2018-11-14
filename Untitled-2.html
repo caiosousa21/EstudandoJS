@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<head></head>
+<body style="background-color: aqua">
+    <h1>page 2</h1>
+    <script>
+        //função para mudar cor de fundo aleatóriamente ao clicar a página
+        backCor = document.querySelector('html').onclick = function() {
+            document.body.style.backgroundColor = "#"+((1<<24)*Math.random()|0).toString(16); 
+        }
+    </script>
+</body>
