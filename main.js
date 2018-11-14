@@ -297,7 +297,9 @@ estruturasTeste = () => {
 testeProxy=()=>{
     //handler tem uma função que recebe um objeto e o valor dele
     var handler ={get:function(obj, prop){
-        //ele checa se não imprime
+        //ele checa se tem valor no objeto, se tiver ele retorna o valor dentro dele, se não imprime olá
+        //if com sintaxe diferente, estrutura é condição ? comando true : comando false
+        console.log('objeto'+obj, 'prop: '+prop)
         return prop in obj ? obj[prop]:'olá';
     }}
     //declarando objeto que será virtualizado com proxy
@@ -307,5 +309,5 @@ testeProxy=()=>{
     p.a = 1;
     p.b = undefined;
     console.log(p.a, p.b)
-    console.log('c' in p,p.c)
+    console.log('d' in p,p.d)
 }
