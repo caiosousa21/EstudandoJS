@@ -295,11 +295,15 @@ estruturasTeste = () => {
 //-------------------------------Proxy---------------------------------------
 
 testeProxy=()=>{
-    
+    //handler tem uma função que recebe um objeto e o valor dele
     var handler ={get:function(obj, prop){
+        //ele checa se não imprime
         return prop in obj ? obj[prop]:'olá';
     }}
-    var p = new Proxy({},handler)
+    //declarando objeto que será virtualizado com proxy
+    var target = {}
+    //proxy é composto por um objeto alvo que será virtualizado e um objeto handler o qual irá definir o comportamento do proxy
+    var p = new Proxy(target, handler)
     p.a = 1;
     p.b = undefined;
     console.log(p.a, p.b)
