@@ -383,16 +383,56 @@ errando = () => {
             this.date = new Date();
         }
     }
-    try{
+    try {
         throw new ErroNovo('testando', 'mensagem teste')
-    }catch(e){
+    } catch (e) {
         console.log(e.teste);
         console.log(e.message);
         console.log(e.stack);
     }
+    console.log(v)
 }
 
-debuga=()=>{
+debuga = () => {
     debugger;
 }
 
+trechoEstrito = () => {
+    'use strict';
+    //excessão: x não declarado
+    const metodo1 = () => {
+        try {
+            x = 10
+            console.log(x)
+        } catch (e) {
+            console.log(e);
+        }
+    }
+    const metodo2 = () => {
+        try {
+            var x = 10;
+            console.log(x);
+        } catch (e) {
+            console.log(e);
+        }
+    }
+    try {
+        metodo3 = () => { }
+        metodo3();
+    } catch (e) {
+        console.log(e);
+    }
+    function metodo4(a, b) {
+        try{
+            var v = 12 + a +
+            b
+            console.log(v)
+        }catch(e){
+            console.log(e);   
+        }
+}
+
+metodo1();
+metodo2();
+metodo4(3,1);
+}
