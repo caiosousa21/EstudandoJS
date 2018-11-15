@@ -9,7 +9,9 @@
 function func() {
     window.open("file:///C:/Users/csousa/Documents/Estudando%20JS/Untitled-2.html");
 }
-
+window.onload = function() {
+    console.log('PAGINA CARREGADA!!!')
+}
 
 paragrafo = document.querySelector('p').onclick = function () {
     var myName = prompt("Insira seu nome");
