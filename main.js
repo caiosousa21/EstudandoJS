@@ -6,8 +6,6 @@
 // } else {
 //     alert('Awwww, but chocolate is my favorite...');
 // }
-
-
 function func() {
     window.open("file:///C:/Users/csousa/Documents/Estudando%20JS/Untitled-2.html");
 }
@@ -346,16 +344,50 @@ testeProxy = () => {
     entrada.a = {};
 }
 
-testandoRegExp=()=>{
+testandoRegExp = () => {
     var re = /(\w+)\s(\w+)/;
     var str = 'John Smith';
     console.log(str.replace(re, '$2, $1'))
     var filmeTitulo = prompt("insira um nome de filme");
-    if(filmeTitulo != null){
-        filmeTitulo.replace(/ /g,'%20')
-        filmeTitulo='Shrek'
-    } 
-    var left=screen.width/2
-    var top=(screen.height/2)-100
-    window.open('http://www.omdbapi.com/?t='+filmeTitulo+'&apikey=f74f16b0', 'Retorno IMDB', 'height=200, width = 200, top='+top+', left='+left)
+    if (filmeTitulo != null) {
+        filmeTitulo.replace(/ /g, '%20')
+        filmeTitulo = 'Shrek'
+    }
+    var left = screen.width / 2 - 200
+    var top = screen.height / 2 - 200
+    window.open('http://www.omdbapi.com/?t=' + filmeTitulo + '&apikey=f74f16b0', 'Retorno IMDB', 'height=200, width = 200, top=' + top + ', left=' + left)
+}
+
+errando = () => {
+    var x = new Error('Objeto erro')
+    console.log(x)
+    try {
+        throw new Error('Whoops!');
+    } catch (e) {
+        console.log(e.name + ': ' + e.message);
+    }
+    var y = new EvalError('Erro global')
+    y instanceof EvalError ? console.log('Nome: ' + y.name + '\nMensagem: ' + y.message) : console.log('suave')
+
+    //Criando classe de erro customizada
+    //Não entendi ao certo. Perguntar depois
+    class ErroNovo extends Error {
+        constructor(teste = 'caio', ...params) {
+            super(...params)
+
+
+            if (Error.captureStackTrace) {
+                Error.captureStackTrace(this.ErroNovo);
+            }
+            this.teste = teste;
+            this.date = new Date();
+        }
+    }
+    try{
+        throw new ErroNovo('testando', 'mensagem teste')
+    }catch(e){
+        console.log(e.teste);
+        console.log(e.message);
+        console.log(e.stack);
+    }
 }
