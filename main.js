@@ -275,7 +275,7 @@ estruturasTeste = () => {
     } catch (e) {
         console.log('WeakSet aceita apenas Objetos')
     }
-    var ff={f:'caio'}
+    var ff = { f: 'caio' }
     ws.add(ff)
     console.log(ws)
     console.log(ws.has(ff))
@@ -292,39 +292,56 @@ estruturasTeste = () => {
 }
 
 
-//-------------------------------Proxy---------------------------------------
+//-------------------------------Proxies e Promises---------------------------------------
 
-testeProxy=()=>{
+testeProxy = () => {
     //handler é um objeto que contém as funções 'traps' que definem o comportamento do proxy
     //o handler abaixo tem um trap get, que recebe um objeto e a propriedade dele, caso não encontre a propriedade então ele escreve caio  
-    var handler ={
-        get:function(obj, prop){
-        //ele checa se tem uma propriedade declarada, se tiver ele retorna o valor dela, se não imprime caio
-        //if com sintaxe diferente, estrutura é condição ? comando true : comando false
-        console.log('objeto'+obj, 'prop: '+prop)
-        return prop in obj ? obj[prop]:'caio';
-    }}
+    var handler = {
+        get: function (obj, prop) {
+            //ele checa se tem uma propriedade declarada, se tiver ele retorna o valor dela, se não imprime caio
+            //if com sintaxe diferente, estrutura é condição ? comando true : comando false
+            console.log('objeto' + obj, 'prop: ' + prop)
+            return prop in obj ? obj[prop] : 'caio';
+        }
+    }
     //declarando objeto que será virtualizado com proxy
-    var target = [1,2,3,4,5]
+    var target = [1, 2, 3, 4, 5]
     //proxy é composto por um objeto alvo que será virtualizado e um objeto handler o qual irá definir o comportamento do proxy
     var p = new Proxy(target, handler)
-    p.a = {caio:'caio'};
+    p.a = { caio: 'caio' };
     p.b = 2;
     console.log(p.a, p.b)
-    console.log('d' in p,p.d)
+    console.log('d' in p, p.d)
 
     //com proxy é possivel fazer a validação dos valores passados a um objeto
-    let validatorHandler={      
-        set:function(obj, property, value, receiver){
-            obj[property]=value
-                typeof obj[property] === "number" ? console.log('número: '+obj[property]):
-                    typeof obj[property] === "string" ? console.log('string: '+obj[property]): console.log('nem número nem string '+obj[property])
-            
+    let validatorHandler = {
+        set: function (obj, property, value, receiver) {
+            obj[property] = value
+            typeof obj[property] === "number" ? console.log('número: ' + obj[property]) :
+                typeof obj[property] === "string" ? console.log('string: ' + obj[property]) : console.log('nem número nem string ' + obj[property])
+
             return true;//indicando sucesso
         }
     }
+
+    //Promises é uma proxy para um valor o qual ainda não se tem total conhecimento, oque permite trabalhar com handlers de maneira assincrona, com um método executor que recebe
+    //dois parâmetros, resolve e reject, que são funções que ou dão uma resolução ou rejeitam a Promise, o executor faz seu trabalho de maneira asincrona até que resolva ou rejeite 
+    //a promessa   
+    tempo = new Promise((resolve, reject) => {
+        //método setTimeout(comando de oque fazer, tempo de espera)
+        setTimeout(() => {
+            resolve('caio');
+        }, 1000);
+    })
+    tempo.then((valor) => {
+        console.log(valor);
+    });
+    console.log(tempo)
+
+
     let entrada = new Proxy({}, validatorHandler)
-    entrada.a=10;
-    entrada.a='caio'
-    entrada.a={};
+    entrada.a = 10;
+    entrada.a = 'caio'
+    entrada.a = {};
 }
