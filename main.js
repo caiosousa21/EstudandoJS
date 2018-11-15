@@ -295,19 +295,36 @@ estruturasTeste = () => {
 //-------------------------------Proxy---------------------------------------
 
 testeProxy=()=>{
-    //handler tem uma função que recebe um objeto e o valor dele
-    var handler ={get:function(obj, prop){
-        //ele checa se tem valor no objeto, se tiver ele retorna o valor dentro dele, se não imprime olá
+    //handler é um objeto que contém as funções 'traps' que definem o comportamento do proxy
+    //o handler abaixo tem um trap get, que recebe um objeto e a propriedade dele, caso não encontre a propriedade então ele escreve caio  
+    var handler ={
+        get:function(obj, prop){
+        //ele checa se tem uma propriedade declarada, se tiver ele retorna o valor dela, se não imprime caio
         //if com sintaxe diferente, estrutura é condição ? comando true : comando false
         console.log('objeto'+obj, 'prop: '+prop)
-        return prop in obj ? obj[prop]:'olá';
+        return prop in obj ? obj[prop]:'caio';
     }}
     //declarando objeto que será virtualizado com proxy
-    var target = {}
+    var target = [1,2,3,4,5]
     //proxy é composto por um objeto alvo que será virtualizado e um objeto handler o qual irá definir o comportamento do proxy
     var p = new Proxy(target, handler)
-    p.a = 1;
-    p.b = undefined;
+    p.a = {caio:'caio'};
+    p.b = 2;
     console.log(p.a, p.b)
     console.log('d' in p,p.d)
+
+    //com proxy é possivel fazer a validação dos valores passados a um objeto
+    let validatorHandler={      
+        set:function(obj, property, value, receiver){
+            obj[property]=value
+                typeof obj[property] === "number" ? console.log('número'+obj[property]):
+                    typeof obj[property] === "string" ? console.log('string'+obj[property]): console.log('nem número nem string'+obj[property])
+            
+            return true;//indicando sucesso
+        }
+    }
+    let entrada = new Proxy({}, validatorHandler)
+    entrada.a=10;
+    entrada.a='10'
+    entrada.a={};
 }
