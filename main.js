@@ -423,16 +423,48 @@ trechoEstrito = () => {
         console.log(e);
     }
     function metodo4(a, b) {
-        try{
+        try {
             var v = 12 + a +
-            b
+                b
             console.log(v)
-        }catch(e){
-            console.log(e);   
+        } catch (e) {
+            console.log(e);
         }
+    }
+    metodo1();
+    metodo2();
+    metodo4(3, 1);
 }
 
-metodo1();
-metodo2();
-metodo4(3,1);
+javascriptOO=()=>{
+    'use strict';
+    function Pessoa(primeiroN, sobreN, idade, registro){
+        this.nomePessoa = primeiroN;
+        this.sobreNome = sobreN;
+        this.idadePessoa = idade;
+        this.rg = registro;
+    }
+    Pessoa.prototype.filo = "Cordados";
+    var pessoaA = new Pessoa("João","Almeida", 32, '138439206');
+    var pessoaB = new Pessoa("Gilmar","Lee", 74, '185206706');
+    console.log(pessoaA, pessoaB);
+    console.log(pessoaA.filo)
+
+    Pessoa.prototype.nome= function(){
+        return this.nomePessoa +" "+this.sobreNome;
+    }
+    console.log(pessoaA.nome());
+
+    function Aluno(primeiroN, sobreN, idade, registro, curso){
+        Pessoa.call(this, primeiroN, sobreN, idade, registro);
+        this.graduacao = curso;
+    }
+    Aluno.prototype = Object.create(Pessoa.prototype);
+    var pessoaC = new Aluno("Caio","Sousa", 21, "869306528", "SI");
+    console.log(pessoaC, pessoaC.filo, pessoaC.nome());
+
+    Aluno.prototype.nome = function(){
+        return this.nomePessoa +" "+this.sobreNome+" "+this.graduacao;
+    }
+    console.log(pessoaC.nome());
 }
