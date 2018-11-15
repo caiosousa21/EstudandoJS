@@ -345,3 +345,17 @@ testeProxy = () => {
     entrada.a = 'caio'
     entrada.a = {};
 }
+
+testandoRegExp=()=>{
+    var re = /(\w+)\s(\w+)/;
+    var str = 'John Smith';
+    console.log(str.replace(re, '$2, $1'))
+    var filmeTitulo = prompt("insira um nome de filme");
+    if(filmeTitulo != null){
+        filmeTitulo.replace(/ /g,'%20')
+        filmeTitulo='Shrek'
+    } 
+    var left=screen.width/2
+    var top=(screen.height/2)-100
+    window.open('http://www.omdbapi.com/?t='+filmeTitulo+'&apikey=f74f16b0', 'Retorno IMDB', 'height=200, width = 200, top='+top+', left='+left)
+}
