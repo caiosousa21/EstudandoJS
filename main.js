@@ -391,3 +391,8 @@ errando = () => {
         console.log(e.stack);
     }
 }
+
+debuga=()=>{
+    debugger;
+}
+
