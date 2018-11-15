@@ -317,14 +317,14 @@ testeProxy=()=>{
     let validatorHandler={      
         set:function(obj, property, value, receiver){
             obj[property]=value
-                typeof obj[property] === "number" ? console.log('número'+obj[property]):
-                    typeof obj[property] === "string" ? console.log('string'+obj[property]): console.log('nem número nem string'+obj[property])
+                typeof obj[property] === "number" ? console.log('número: '+obj[property]):
+                    typeof obj[property] === "string" ? console.log('string: '+obj[property]): console.log('nem número nem string '+obj[property])
             
             return true;//indicando sucesso
         }
     }
     let entrada = new Proxy({}, validatorHandler)
     entrada.a=10;
-    entrada.a='10'
+    entrada.a='caio'
     entrada.a={};
 }
