@@ -1,0 +1,28 @@
+p{
+    color:red;
+}
+#para{
+    color: blue;
+}
+
+p.neymar{
+    background-color: honeydew
+}
+
+p#Para {
+    color: brown;
+    background-color: bisque;
+    border: 1px  solid #202344;
+}
+
+
+
+button{
+    color: #202344;
+}
+
+@media(min-width: 700px){
+    body{
+        background-color: aliceblue;
+    }
+}

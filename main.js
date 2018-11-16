@@ -348,7 +348,7 @@ testeProxy = () => {
 
 testandoRegExp = () => {
     var re = /(\w+)\s(\w+)/;
-    var str = 'Ronaldo Fenômeno';
+    var str = 'Ronaldo Fenomeno'; // problemas com acentuação
     console.log(str.replace(re, '$2, $1'))
     var filmeTitulo = prompt("insira um nome de filme");
     if (filmeTitulo != undefined) {
