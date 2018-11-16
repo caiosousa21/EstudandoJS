@@ -4,6 +4,10 @@
 </head>
 <body>
     <script>
-        console.log(window.location.href)    
+        var url = window.location.href;
+        var res1 = url.substring(77,url.length);
+        var res2 = res1.replace(/&/g,' ');
+        console.log(res2)   
+    
     </script>
 </body>

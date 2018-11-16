@@ -528,3 +528,44 @@ rest=()=>{
     }
     console.log(ordenandoRestArgs(8,18,5,2,7,8,10,'a','b','&','2','"',' '));
 }
+
+formularioCriaObjeto=(x)=>{
+    const formulario = document.getElementById('meuForm') ? 
+        document.getElementById('meuForm') : 
+        document.createElement('form');
+
+    if (document.getElementById('meuForm')) {
+        formulario.remove();
+    } else {
+        formulario.id='meuForm';
+        formulario.action='valoresOrdenados.html'
+        formulario.method='get';
+        
+    
+        const entradaNome = document.createElement('input');
+        entradaNome.id='idNome';
+        entradaNome.name='eNome';
+        entradaNome.type='text';
+    
+        const entradaSobrenome = document.createElement('input');
+        entradaSobrenome.id='idSobrenome';
+        entradaSobrenome.name='sNome';
+        entradaSobrenome.type='text';
+    
+        const entradaIdade = document.createElement('input');
+        entradaIdade.id='idIdade';
+        entradaIdade.name='eIdade';
+        entradaIdade.type='text';
+    
+        const btnSubmit = document.createElement('input');
+        btnSubmit.id ='idSubmit';
+        btnSubmit.type='submit';
+        btnSubmit.textContent='Enviar';
+        
+        document.body.insertAdjacentElement('afterend',formulario);
+        formulario.appendChild(entradaNome);
+        formulario.appendChild(entradaSobrenome);
+        formulario.appendChild(entradaIdade);
+        formulario.appendChild(btnSubmit);        
+    }
+}
