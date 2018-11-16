@@ -14,3 +14,15 @@ document.querySelector('p.data').textContent =filmeJSON.Released;
 document.querySelector('p.genero').textContent =filmeJSON.Genre;
 document.querySelector('p.sinopse').textContent =filmeJSON.Plot;
 document.querySelector('img.poster').src =filmeJSON.Poster;
+
+document.querySelector('p.titulo').animate([
+    // keyframes
+    {transform: 'translateX(0px)' }, 
+    {transform: 'translateX(50px)' },
+    {transform: 'translateX(0)'}
+  ], { 
+    // timing options
+    delay: 500,
+    duration: 1000,
+    iterations: Infinity
+  });

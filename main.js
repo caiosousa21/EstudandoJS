@@ -472,3 +472,59 @@ javascriptOO=()=>{
     }
     console.log(pessoaC.nome());
 }
+
+//-------------------------------------Rest----------------------------------
+rest=()=>{
+    //criando formulario
+    var formulario = document.createElement('form');
+    formulario.name='meuForm';
+    formulario.method='GET';
+    formulario.autocomplete = 'off';
+    //formulario.action='valoresOrdenados.html'
+    
+    
+    //criando input
+    var entradaValores = document.createElement('input');
+    entradaValores.type='text';
+    entradaValores.id='entra';
+    formulario.appendChild(entradaValores);
+
+    //criando botão
+    var btnSubmit = document.createElement('input');
+    btnSubmit.type = 'submit';
+    btnSubmit.id = 'btn';
+    btnSubmit.textContent = 'Enviar'; 
+
+    document.body.insertAdjacentElement('afterend',btnSubmit);
+    document.body.insertAdjacentElement('afterend',formulario);
+
+    var resp = document.getElementById("entra");
+    var envio = document.getElementById("btn");
+
+    var enviarValores = function(){
+        console.log(ordenandoRestArgs(resp.value));
+        separar(resp.value);
+        resp.value = '';
+    }
+
+    envio.onclick = enviarValores;
+
+    var btnSubmit2 = document.createElement('button');
+    btnSubmit.type = 'submit';
+    btnSubmit.id = 'btn2';
+    btnSubmit.textContent = 'Adicionar ao array'; 
+    document.body.insertAdjacentElement("beforeend",btnSubmit2);
+    function separar(entrada){
+        args = []
+        for(var i=0;i<entrada.length;i++){
+            args[i] = entrada[i]; 
+        }
+        console.log(args.sort())
+    }
+
+    function ordenandoRestArgs(...argumentos){
+        var ordenadosArgs = argumentos.sort();
+        return ordenadosArgs;
+    }
+    console.log(ordenandoRestArgs(8,18,5,2,7,8,10,'a','b','&','2','"',' '));
+}
