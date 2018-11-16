@@ -348,16 +348,18 @@ testeProxy = () => {
 
 testandoRegExp = () => {
     var re = /(\w+)\s(\w+)/;
-    var str = 'John Smith';
+    var str = 'Ronaldo Fenômeno';
     console.log(str.replace(re, '$2, $1'))
     var filmeTitulo = prompt("insira um nome de filme");
-    if (filmeTitulo != null) {
+    if (filmeTitulo != undefined) {
         filmeTitulo.replace(/ /g, '%20')
+    }else{
         filmeTitulo = 'Shrek'
     }
-    var left = screen.width / 2 - 200
-    var top = screen.height / 2 - 200
-    window.open('http://www.omdbapi.com/?t=' + filmeTitulo + '&apikey=f74f16b0', 'Retorno IMDB', 'height=200, width = 200, top=' + top + ', left=' + left)
+    localStorage.setItem("nomeFilme",filmeTitulo);
+    var left = screen.width / 2 -200
+    var top = screen.height / 2 -350
+    window.open('TelaFilme.html', 'Retorno IMDB', 'height=700, width = 315, top=' + top + ', left=' + left)
 }
 
 errando = () => {
