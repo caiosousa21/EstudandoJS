@@ -14,8 +14,3 @@ document.querySelector('p.data').textContent =filmeJSON.Released;
 document.querySelector('p.genero').textContent =filmeJSON.Genre;
 document.querySelector('p.sinopse').textContent =filmeJSON.Plot;
 document.querySelector('img.poster').src =filmeJSON.Poster;
-<<<<<<< HEAD
-=======
-
-
->>>>>>> teste
