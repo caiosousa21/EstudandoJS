@@ -351,11 +351,13 @@ testandoRegExp = () => {
     var filmeTitulo = prompt("insira um nome de filme");
     if (filmeTitulo != null) {
         filmeTitulo.replace(/ /g, '%20')
-        filmeTitulo = 'Shrek'
+    }else{
+        filmeTitulo = 'shrek'
     }
+    localStorage.setItem("nomeFilme", filmeTitulo);
     var left = screen.width / 2 - 200
-    var top = screen.height / 2 - 200
-    window.open('http://www.omdbapi.com/?t=' + filmeTitulo + '&apikey=f74f16b0', 'Retorno IMDB', 'height=200, width = 200, top=' + top + ', left=' + left)
+    var top = screen.height / 2 - 350
+    window.open('TelaFilme.html', 'Retorno IMDB', 'height=800, width = 315, top=' + top + ', left=' + left)
 }
 
 errando = () => {
