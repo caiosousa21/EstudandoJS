@@ -394,7 +394,7 @@ errando = () => {
         console.log(e.message);
         console.log(e.stack);
     }
-    console.log(v)
+    console.log(y)
 }
 
 debuga = () => {
