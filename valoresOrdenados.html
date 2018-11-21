@@ -3,11 +3,65 @@
         <meta charset="UTF-8">
 </head>
 <body>
+    <p class='p1'></p><br>
+    <p class='p2'></p><br>
+    <p class='p3'></p><br>
+    <p class='p4'></p>
     <script>
         var url = window.location.href;
         var res1 = url.substring(77,url.length);
         var res2 = res1.replace(/&/g,' ');
-        console.log(res2)   
+        var res3 = res2.replace(/sNome=/g,' ');
+        var res4 = res3.replace(/eIdade=/g,' ');
+        var entradas = res4.split("  ")
+        console.log(entradas)  
+        function Pessoa(primeiroN, sobreN, idade){
+            this.primeiroN = primeiroN;
+            this.sobreN = sobreN;
+            this.idade = idade;
+        }  
+        Pessoa.prototype.especie='Humano';
+        var pessoa = new Pessoa(entradas[0],entradas[1],entradas[2]);
+
+
+        //função não utilizada, não consegui chamar a função
+        Pessoa.prototype.titulo = function(idade){
+            switch(idade){
+                case 0:
+                    return 'Infante';
+                    break;
+                case (idade >0 && idade<12):
+                    return 'Criança';
+                    break;
+                case (idade >=12 && idade < 18):
+                    return 'Adolescente';
+                    break;  
+                case (idade >=18 && idade < 60):
+                    console.log('adulto');
+                    return 'Adulto';  
+                    break;
+                case (idade < 60):
+                    return 'Idoso';
+                    break;      
+                
+            }
+        }
+
+
+
+        var paragrafo = document.querySelector('p.p1');
+        var no1 = document.createTextNode('Nome: '+pessoa.primeiroN);
+        paragrafo.appendChild(no1);
+
+        var paragrafo = document.querySelector('p.p2');
+        var no2 = document.createTextNode('Sobrenome: '+pessoa.sobreN);
+        paragrafo.appendChild(no2);
+
+        var paragrafo = document.querySelector('p.p3');
+        var no3 = document.createTextNode(' Idade: '+pessoa.idade);
+        paragrafo.appendChild(no3);
+        //console.log(pessoa.titulo(pessoa.idade)); retorna undefined, não entra no switch
+
     
     </script>
 </body>
